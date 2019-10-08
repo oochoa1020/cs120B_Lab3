@@ -38,7 +38,10 @@ int main(void) {
                 if (curA == 0x08) {
 			tmpC = tmpC + 8;
 		}
-		if (tmpC <= 2) {
+		if (tmpC == 0) {
+                        curC = 0x40;
+                }
+		else if (tmpC <= 2) {
 			curC = 0x60;
 		}
 		else if (tmpC <= 4) {
