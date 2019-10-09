@@ -14,64 +14,51 @@
 
 int main(void) {
 	DDRA = 0x00; PORTA = 0xFF;
+	DDRB = 0xFF; PORTB = 0x00;
 	DDRC = 0xFF; PORTC = 0x00;
 	unsigned int tmpC = 0;
 	unsigned char tmpA = 0x00;
+	unsigned char tmpB = 0x00;
 	unsigned char curA = 0x00;
-	unsigned char curC = 0x00;
-	unsigned char fastenOn = 0x00;
 	while(1) {
 		tmpA = PINA & 0xFF;
 		curA = tmpA & 0x01;
 		tmpC = 0;
-		fastenOn = 0x00;
+		tmpB = 0;
 		if (curA == 0x01) {
-			tmpC = tmpC + 1;
+			tmpC = tmpC + 16;
 		}
 		curA = tmpA & 0x02;
                 if (curA == 0x02) {
-			tmpC = tmpC + 2;
+			tmpC = tmpC + 32;
 		}
 		curA = tmpA & 0x04;
                 if (curA == 0x04) {
-			tmpC = tmpC + 4;
+			tmpC = tmpC + 64;
 		}
 		curA = tmpA & 0x08;
                 if (curA == 0x08) {
-			tmpC = tmpC + 8;
+			tmpC = tmpC + 128;
 		}
-
-		curA = tmpA & 0x70;
-		if (curA == 0x30) {
-			fastenOn = 0x01;
-		}
-
-
-		if (tmpC == 0) {
-                        curC = 0x40;
+		curA = tmpA & 0x10;
+		if (curA == 0x10) {
+                        tmpB = tmpB + 1;
                 }
-		else if (tmpC <= 2) {
-			curC = 0x60;
-		}
-		else if (tmpC <= 4) {
-                        curC = 0x70;
+                curA = tmpA & 0x20;
+                if (curA == 0x20) {
+                        tmpB = tmpB + 2;
                 }
-		else if (tmpC <= 6) {
-                        curC = 0x38;
+                curA = tmpA & 0x40;
+                if (curA == 0x40) {
+                        tmpB = tmpB + 4;
                 }
-		else if (tmpC <= 9) {
-                        curC = 0x3C;
+                curA = tmpA & 0x80;
+                if (curA == 0x80) {
+                        tmpB = tmpB + 8;
                 }
-		else if (tmpC <= 12) {
-                        curC = 0x3E;
-                }
-		else if (tmpC <= 15) {
-                        curC = 0x3F;
-                }
-		if (fastenOn == 0x01) {
-			curC = curC + 0x80;
-		}
-		PORTC = curC;
+		
+		PORTB = tmpB;
+		PORTC = tmpC;
 	}
     return 1;
 }

@@ -27,39 +27,39 @@ echo ======================================================\n
 echo Running all tests..."\n\n
 
 # Add tests below
-test "PINA: 0x14 =>PORTB: 0x01  PORTC: 0x04”
+test "PINA: 0x14 =>PORTB: 0x01  PORTC: 0x40”
 setPINA 0x14
 continue 5
 expectPORTB 0x01
-expectPORTC 0x04
+expectPORTC 0x40
 checkResult
 
-test "PINA: 0x0F =>PORTB: 0x00  PORTC: 0x0F”
+test "PINA: 0x0F =>PORTB: 0x00  PORTC: 0xF0”
 setPINA 0x0F
 continue 5
 expectPORTB 0x00
-expectPORTC 0x0F
+expectPORTC 0xF0
 checkResult
 
-test "PINA: 0x28 =>PORTB: 0x02  PORTC: 0x08”
+test "PINA: 0x28 =>PORTB: 0x02  PORTC: 0x80”
 setPINA 0x28
 continue 5
 expectPORTB 0x02
-expectPORTC 0x08
+expectPORTC 0x80
 checkResult
 
-test "PINA: 0x42 =>PORTB: 0x04  PORTC: 0x02”
+test "PINA: 0x42 =>PORTB: 0x04  PORTC: 0x20”
 setPINA 0x42
 continue 5
 expectPORTB 0x04
-expectPORTC 0x02
+expectPORTC 0x20
 checkResult
 
-test "PINA: 0x51 =>PORTB: 0x05  PORTC: 0x01”
+test "PINA: 0x51 =>PORTB: 0x05  PORTC: 0x10”
 setPINA 0x51
 continue 5
 expectPORTB 0x05
-expectPORTC 0x01
+expectPORTC 0x10
 checkResult
 
 

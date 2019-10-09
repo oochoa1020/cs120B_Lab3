@@ -20,28 +20,25 @@ int main(void) {
 	unsigned char tmpA = 0x00;
 	unsigned char tmpB = 0x00;
 	unsigned char curA = 0x00;
-	unsigned char curC = 0x00;
-	unsigned char fastenOn = 0x00;
 	while(1) {
 		tmpA = PINA & 0xFF;
 		curA = tmpA & 0x01;
 		tmpC = 0;
 		tmpB = 0;
-		fastenOn = 0x00;
 		if (curA == 0x01) {
-			tmpC = tmpC + 1;
+			tmpC = tmpC + 16;
 		}
 		curA = tmpA & 0x02;
                 if (curA == 0x02) {
-			tmpC = tmpC + 2;
+			tmpC = tmpC + 32;
 		}
 		curA = tmpA & 0x04;
                 if (curA == 0x04) {
-			tmpC = tmpC + 4;
+			tmpC = tmpC + 64;
 		}
 		curA = tmpA & 0x08;
                 if (curA == 0x08) {
-			tmpC = tmpC + 8;
+			tmpC = tmpC + 128;
 		}
 		curA = tmpA & 0x10;
 		if (curA == 0x10) {
